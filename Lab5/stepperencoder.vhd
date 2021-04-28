@@ -42,5 +42,5 @@ begin
 			end case;
 		end if;
 	end process;
-end Behaviour;
+end Behaviour; 
 
