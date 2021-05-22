@@ -78,8 +78,12 @@ void cerostate(){ //State 0
 
 void countdown(){ //State 1
 	while (count)	//While there is time in countdown
-	{
+	{	
 		_delay_ms(1000);
+		if(!(count%10)){//Delete old zeros on LCD
+			lcd_clrscr(); //Clear LCD
+			lcd_puts("Countdown:");
+		}
 		count --;	//Subtract 1 of the countdown
 		itoa(count, snumero, 10);
 		lcd_gotoxy(0, 1);
