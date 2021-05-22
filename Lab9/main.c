@@ -93,11 +93,21 @@ void enddcount(){ //State 2
 		lcd_clrscr();
 		lcd_puts("Finish!:");
 		state ++;
+		PORTD |= (1 << PORTD6); //Turn on LED
 	}
-	PORTD |= (1 << PORTD6); //Turn on LED
+	
+	tiempo ++; //Blink counter
+	_delay_ms(10);  
+	
+	if(tiempo > 50){
+		PORTD ^= (1 << PORTD6); //Toggle LED state
+		tiempo = 0; //Reset blink counter
+	}
+	
 	if(!(PIND & (1 << PIND4))) //If pushed button
 	{
 		PORTD &= ~(1 << PORTD6); // Turn off LED
 		state = 0; //Return to state 0
+		tiempo = 0; //Reset blink counter
 	}
 }
