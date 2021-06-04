@@ -20,7 +20,7 @@ int main(void){
     
 	ADMUX |= (1 << REFS0); //Use AVcc as the reference
 	ADMUX |= (1 << MUX2); //Read ACD4
-	ADMUX &= ~((1 << MUX3) & (1 << MUX1) & (1 << MUX0)); //Read ACD4
+	ADMUX &= ~((1 << MUX3) | (1 << MUX1) | (1 << MUX0)); //Read ACD4
 	ADCSRA |= (1 << ADATE); //Set ADC autotrigger
 	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); //Timer 128 prescale
 	ADCSRA |= (1 << ADEN); //Enable ADC
